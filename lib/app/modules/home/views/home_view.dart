@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:todoapps/app/controllers/firebaseauth_controller.dart';
+import 'package:todoapps/app/routes/app_pages.dart';
 import 'package:todoapps/colors/colors.dart';
 
 import '../controllers/home_controller.dart';
@@ -10,6 +12,8 @@ class HomeView extends GetView<HomeController> {
   HomeView({super.key});
 
   final authController = Get.find<FirebaseauthController>();
+  final user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     controller.getCurrentUserName();
@@ -31,8 +35,8 @@ class HomeView extends GetView<HomeController> {
           child: FloatingActionButton(
             backgroundColor: Colors.transparent,
             onPressed: () {
-              // Navigator.pushNamed(context, AddData.routeName,
-              //     arguments: user!.uid);
+              Navigator.pushNamed(context, Routes.ADD_DATA,
+                  arguments: user!.uid);
             },
             shape: const CircleBorder(),
             child: const Icon(

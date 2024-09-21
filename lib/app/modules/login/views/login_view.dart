@@ -79,7 +79,7 @@ class LoginView extends GetView<LoginController> {
                         ),
                       ),
                       Text(
-                        'Catat PR, Capai Tujuanmu',
+                        'Catat Tugas, Capai Tujuanmu',
                         style: TextStyle(
                           color: neutralWhite,
                           fontSize: 20,
