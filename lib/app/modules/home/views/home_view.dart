@@ -139,7 +139,10 @@ class HomeView extends GetView<HomeController> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 3),
                       child: InkWell(
-                        onTap: () => Get.toNamed(Routes.DETAIL),
+                        onTap: () => Get.toNamed(Routes.DETAIL, arguments: {
+                          'userId': user!.uid,
+                          'docId': listData[index].id,
+                        }),
                         child: Card(
                           child: Padding(
                             padding: const EdgeInsets.all(15.0),
@@ -153,7 +156,7 @@ class HomeView extends GetView<HomeController> {
                                       "${(listData[index].data() as Map<String, dynamic>)["matkul"]}",
                                       style: const TextStyle(
                                         fontFamily: 'myfomt',
-                                        fontSize: 15,
+                                        fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                         color: neutralBlack,
                                       ),

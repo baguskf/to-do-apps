@@ -10,6 +10,17 @@ class AddDataController extends GetxController {
   var dateController = RxnString();
   DateTime? selectedDate;
 
+  @override
+  void onInit() {
+    super.onInit();
+    resetDate();
+  }
+
+  void resetDate() {
+    selectedDate = null;
+    dateController.value = '';
+  }
+
   void pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       allowMultiple: true,
