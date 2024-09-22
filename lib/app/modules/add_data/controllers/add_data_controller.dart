@@ -10,14 +10,8 @@ class AddDataController extends GetxController {
   var dateController = RxnString();
   DateTime? selectedDate;
 
-  @override
-  void onInit() {
-    super.onInit();
-    resetDate();
-  }
-
-  void resetDate() {
-    selectedDate = null;
+  void resetInputs() {
+    selectedFiles.clear();
     dateController.value = '';
   }
 

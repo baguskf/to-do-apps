@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:todoapps/app/routes/app_pages.dart';
 import 'package:todoapps/colors/colors.dart';
 
 import '../controllers/detail_controller.dart';
@@ -40,10 +41,10 @@ class DetailView extends GetView<DetailController> {
           ),
         ),
       ),
-      body: FutureBuilder<DocumentSnapshot<Object?>>(
-        future: controller.getData(userId, docId),
+      body: StreamBuilder<DocumentSnapshot<Object?>>(
+        stream: controller.getData(userId, docId),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.connectionState == ConnectionState.active) {
             var data = snapshot.data!.data() as Map<String, dynamic>;
             return SingleChildScrollView(
               child: Padding(
@@ -72,11 +73,16 @@ class DetailView extends GetView<DetailController> {
                             Row(
                               children: [
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      Get.toNamed(Routes.EDIT, arguments: {
+                                    'userId': userId,
+                                    'docId': docId,
+                                  }),
                                   icon: Icon(Icons.edit),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: () =>
+                                      controller.deleteData(userId, docId),
                                   icon: Icon(Icons.delete_outline_sharp),
                                 ),
                               ],

@@ -7,20 +7,70 @@ import 'package:get/get.dart';
 
 import 'dart:io';
 
+import 'package:todoapps/app/routes/app_pages.dart';
+
 class DetailController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
-  Future<DocumentSnapshot<Object?>> getData(String userId, String docID) async {
+  Stream<DocumentSnapshot<Object?>> getData(String userId, String docID) {
     DocumentReference docRef = firestore
         .collection('data')
         .doc(userId)
         .collection('dataUser')
         .doc(docID);
 
-    return docRef.get();
+    return docRef.snapshots();
+  }
+
+  void deleteData(String userId, String docID) {
+    DocumentReference docRef = firestore
+        .collection('data')
+        .doc(userId)
+        .collection('dataUser')
+        .doc(docID);
+
+    try {
+      Get.dialog(
+        AlertDialog(
+          title: const Text('Hapus Data'),
+          content: const Text('Apakah yakin untuk menghapus data?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                docRef.delete();
+                Get.offAllNamed(Routes.HOME);
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+        barrierDismissible: true,
+      );
+    } catch (e) {
+      Get.dialog(
+        AlertDialog(
+          title: const Text('Gagal Menghapus Data'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+        barrierDismissible: true,
+      );
+    }
   }
 
   Future<void> downloadFile(String url) async {

@@ -4,6 +4,8 @@ import '../modules/add_data/bindings/add_data_binding.dart';
 import '../modules/add_data/views/add_data_view.dart';
 import '../modules/detail/bindings/detail_binding.dart';
 import '../modules/detail/views/detail_view.dart';
+import '../modules/edit/bindings/edit_binding.dart';
+import '../modules/edit/views/edit_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.DETAIL,
       page: () => DetailView(),
       binding: DetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT,
+      page: () => EditView(),
+      binding: EditBinding(),
     ),
   ];
 }

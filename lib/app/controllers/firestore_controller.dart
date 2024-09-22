@@ -56,6 +56,7 @@ class FirestoreController extends GetxController {
             TextButton(
               onPressed: () {
                 Get.back();
+                addDataController.resetInputs();
                 Get.offAllNamed(Routes.HOME);
               },
               child: const Text('OK'),
@@ -88,7 +89,7 @@ class FirestoreController extends GetxController {
   Stream<QuerySnapshot<Object?>> getData(String userId) {
     CollectionReference listdata =
         firestore.collection('data').doc(userId).collection('dataUser');
-    return listdata.snapshots();
+    return listdata.orderBy('createdAt', descending: true).snapshots();
   }
 
   String _getErrorMessage(String errorCode) {
@@ -99,7 +100,8 @@ class FirestoreController extends GetxController {
       'invalid-email': 'Email tidak valid',
       'weak-password': 'Password terlalu lemah',
       'email-already-in-use': 'Email sudah digunakan',
-      'The email address is badly formatted': 'Format email salah'
+      'The email address is badly formatted': 'Format email salah',
+      'not-found': 'Tidak ada perubahan'
     };
     return errorMessages[errorCode] ?? 'Terjadi kesalahan: $errorCode';
   }
