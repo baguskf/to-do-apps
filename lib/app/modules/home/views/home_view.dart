@@ -149,29 +149,32 @@ class HomeView extends GetView<HomeController> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "${(listData[index].data() as Map<String, dynamic>)["matkul"]}",
-                                      style: const TextStyle(
-                                        fontFamily: 'myfomt',
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: neutralBlack,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "${(listData[index].data() as Map<String, dynamic>)["matkul"]}",
+                                        style: const TextStyle(
+                                          fontFamily: 'myfont',
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: neutralBlack,
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "Batas Waktu : ${(listData[index].data() as Map<String, dynamic>)["tanggal"]}",
-                                      style: const TextStyle(
-                                        fontFamily: 'myfont',
-                                        color: neutralBlack,
+                                      SizedBox(
+                                        height: 5,
                                       ),
-                                    ),
-                                  ],
+                                      Text(
+                                        "Batas Waktu : ${(listData[index].data() as Map<String, dynamic>)["tanggal"]}",
+                                        style: const TextStyle(
+                                          fontFamily: 'myfont',
+                                          color: neutralBlack,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 Icon(
                                   Icons.arrow_forward_ios,

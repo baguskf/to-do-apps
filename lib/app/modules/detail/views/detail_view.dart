@@ -61,13 +61,15 @@ class DetailView extends GetView<DetailController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              data["matkul"],
-                              style: TextStyle(
-                                fontFamily: 'myfont',
-                                color: neutralBlack,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                            Expanded(
+                              child: Text(
+                                data["matkul"],
+                                style: TextStyle(
+                                  fontFamily: 'myfont',
+                                  color: neutralBlack,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                ),
                               ),
                             ),
                             Row(
@@ -95,18 +97,29 @@ class DetailView extends GetView<DetailController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'Guru/Dosen',
-                              style: TextStyle(
-                                  fontFamily: 'myfont',
-                                  color: neutralBlack,
-                                  fontWeight: FontWeight.bold),
+                            Expanded(
+                              child: Text(
+                                'Guru/Dosen',
+                                style: TextStyle(
+                                    fontFamily: 'myfont',
+                                    color: neutralBlack,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
-                            Text(
-                              data["dosen"],
-                              style: TextStyle(
-                                  fontFamily: 'myfont', color: neutralBlack),
-                            )
+                            Expanded(
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  data["dosen"],
+                                  style: TextStyle(
+                                    fontFamily: 'myfont',
+                                    fontSize: 20,
+                                    color: neutralBlack,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                         SizedBox(
@@ -120,12 +133,16 @@ class DetailView extends GetView<DetailController> {
                               style: TextStyle(
                                   fontFamily: 'myfont',
                                   color: neutralBlack,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
                             Text(
                               data["tanggal"],
                               style: TextStyle(
-                                  fontFamily: 'myfont', color: neutralBlack),
+                                fontFamily: 'myfont',
+                                color: neutralBlack,
+                                fontSize: 20,
+                              ),
                             )
                           ],
                         ),
@@ -138,9 +155,11 @@ class DetailView extends GetView<DetailController> {
                             Text(
                               'Catatan : ',
                               style: TextStyle(
-                                  fontFamily: 'myfont',
-                                  color: neutralBlack,
-                                  fontWeight: FontWeight.bold),
+                                fontFamily: 'myfont',
+                                color: neutralBlack,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
                             SizedBox(
                               height: 4,
@@ -151,7 +170,10 @@ class DetailView extends GetView<DetailController> {
                               child: Text(
                                 data["note"],
                                 style: TextStyle(
-                                    fontFamily: 'myfont', color: neutralBlack),
+                                  fontFamily: 'myfont',
+                                  color: neutralBlack,
+                                  fontSize: 20,
+                                ),
                                 textAlign: TextAlign.justify,
                               ),
                             )
@@ -168,6 +190,7 @@ class DetailView extends GetView<DetailController> {
                               style: TextStyle(
                                   fontFamily: 'myfont',
                                   color: neutralBlack,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(

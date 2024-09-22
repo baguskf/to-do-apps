@@ -174,10 +174,7 @@ class EditController extends GetxController {
       Get.snackbar('Sukses', 'Data berhasil diperbarui.',
           margin: EdgeInsets.all(20), snackPosition: SnackPosition.BOTTOM);
 
-      Get.offAllNamed(Routes.DETAIL, arguments: {
-        'userId': userId,
-        'docId': docID,
-      });
+      Get.offNamed(Routes.HOME);
     } on FirebaseException catch (e) {
       Get.back();
 
